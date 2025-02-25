@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Yours</title>
+    <style>
+        *{
+            font-family: Kanit, sans-serif;
+            margin: 0;
+            padding: 0;
+           
+        }
+        .main{
+            max-width: 500px;
+            margin: 0 auto;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+       
+
+        .noti{
+            position: relative;
+            top: 60px;
+        }
+        .app-head{
+            width:100%;
+            height:280px;
+            background-color: rgb(93, 93, 241);
+            color:#fff;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom:30px;
+        }
+        .app-map{
+            height:280px;
+        }
+        .app-map, .app-text{
+            width: 100%;
+            display: none; /* ซ่อนแผนที่และข้อความไว้ก่อน */
+        }
+        .app-text{
+            padding:0 15px;
+        }
+        .app-flex{
+            margin-top:30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding:0 15px;
+        }
+        .app-button{
+            width: 100%;
+            height: 150px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border-radius: 15px;
+            padding: 30px;
+            box-sizing: border-box;
+            
+            cursor: pointer;
+            position: relative;
+        }
+        .app-button .status{
+            font-size: 10px;
+            display: none;
+        }
+        .active{
+            background-color: rgb(93, 93, 241);
+            color: #fff;
+        }
+        .active .status{
+            display: block;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="main">
+        <div class="app">
+            <div class="app-head" id="app-head">
+                
+                <h2 style="text-align: center;">Find your things</h2>
+            </div>
+            <div class="app-map" id="map">
+                <img src="map.png" alt="Map" style="width:100%; height:100%;">
+            </div>
+            <div class="app-text" id="app-text">
+                <br>
+                <h3>Room Learning Building 5 (RB5), Chiang Mai University</h3>
+                <p style="font-size:12px;color:gray;width:90%;">239 Huay Kaew Road, Suthep Subdistrict, Mueang Chiang Mai District, Chiang Mai 50200, Thailand</p>
+            </div>
+            <div class="app-flex">
+                <div class="app-button" id="play-btn">
+                    <div style="background-color: #fff; display: flex; justify-content: center; width: 30px; height: 30px; align-items: center; border-radius: 50%; color: #000;">
+                        <i class="fa fa-volume-up" aria-hidden="true"></i>
+                    </div>
+                    <br>
+                    Play Sound
+                    <div class="status">Playing...</div>
+                </div>
+                <div class="app-button" id="direction-btn">
+                    <div style="background-color: #fff; display: flex; justify-content: center; width: 30px; height: 30px; align-items: center; border-radius: 50%; color: #000;">
+                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                    </div>
+                    <br>
+                    Direction
+                    <div class="status">Playing...</div>
+                </div>
+            </div>
+            <div class="noti" style="margin-top:30px;width:100%;background-color: #fff;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding:30px;box-sizing: border-box;">
+                <div style="background-color: #ff2052;display:flex;justify-content: center;width:30px;height:30px;align-items:center;border-radius:50%;color:#fff;">
+                    <i class="fa fa-bell" aria-hidden="true"></i>
+                </div>
+                Notification
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("direction-btn").addEventListener("click", function() {
+            this.classList.toggle("active");
+            const isActive = this.classList.contains("active");
+            document.getElementById("map").style.display = isActive ? "block" : "none";
+            document.getElementById("app-text").style.display = isActive ? "block" : "none";
+            document.getElementById("app-head").classList.toggle("hidden", isActive);
+        });
+        document.getElementById("play-btn").addEventListener("click", function() {
+            this.classList.toggle("active");
+        });
+    </script>
+</body>
+</html>
